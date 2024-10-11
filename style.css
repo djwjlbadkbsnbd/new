@@ -1,6 +1,7 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Serif:ital,wght@0,100..900;1,100..900&display=swap');
 
 body {
-    font-family: 'Helvetica Neue', Arial, sans-serif;
+    font-family: 'Noto serif', sans-serif;
     background-color: #f2f2f2;
     color: #ffffff;
     margin: 0;
@@ -10,7 +11,7 @@ body {
 
 /* Header */
 header {
-    background-color: #000000;
+    background-color: #262626;
     padding: 20px 30px;
     display: flex;
     justify-content: space-between;
@@ -24,13 +25,8 @@ header {
 }
 
 .logo img {
-    width: 40px;
-    height: auto;
-}
-
-.logo h1 {
-    font-size: 18px;
-    margin: 0;
+    width: 100px;
+    height: 100px;
 }
 
 nav ul {
@@ -110,7 +106,6 @@ main {
     background-color: #222222;
     padding: 15px;
     margin-bottom: 20px;
-    border-radius: 5px;
     color: #ffffff;
 }
 
@@ -132,26 +127,15 @@ main {
     padding: 15px;
     width: 100%;
     border: none;
-    border-radius: 5px;
     font-size: 16px;
     cursor: pointer;
+    margin-top: 36%;
 }
 
 .confirm-button:hover {
     background-color: #cccccc;
 }
 
-/* Responsive Design */
-@media (max-width: 768px) {
-    main {
-        flex-direction: column;
-    }
-
-    .service-selection, .summary {
-        width: 100%;
-        margin-bottom: 20px;
-    }
-}
 .section {
     height: 100vh;
     display: flex;
@@ -162,10 +146,9 @@ main {
 }
 
 .opening-hours {
-    background-color: #222222;
-    color: #ffffff;
+    background-color: #1e1e1e;
+    color: #d9d9d9;
     padding: 30px;
-    border-radius: 10px;
     flex: 1;
     min-width: 300px;
     margin: 15px;
@@ -183,7 +166,7 @@ main {
 }
 
 .image-container {
-    background-color: #ddd;
+    background-color: #d9d9d9;
     flex: 2;
     min-width: 300px;
     margin: 15px;
@@ -199,10 +182,9 @@ main {
 }
 
 .services {
-    background-color: #222222;
-    color: #ffffff;
+    background-color: #1e1e1e;
+    color: #d9d9d9;
     padding: 30px;
-    border-radius: 10px;
     flex: 1;
     min-width: 300px;
     margin: 15px;
@@ -220,9 +202,8 @@ main {
 }
 
 .service {
-    background-color: #333333;
+    background-color: #1e1e1e;
     padding: 15px;
-    border-radius: 5px;
     flex: 1;
     min-width: 220px;
     font-size: 14px;
@@ -232,12 +213,12 @@ main {
 .service-title {
     font-weight: bold;
     margin-bottom: 5px;
-    color: #ffffff;
+    color: #D6D6D6;
 }
 
 .service-description {
     font-size: 14px;
-    color: #bbbbbb;
+    color: #d6d6d6;
 }
 
 .reservation {
@@ -246,12 +227,11 @@ main {
 }
 
 .reservation button {
-    background-color: #000000;
-    color: #ffffff;
+    background-color: #1e1e1e;
+    color: #d9d9d9;
     padding: 15px 30px;
     font-size: 18px;
     border: none;
-    border-radius: 5px;
     cursor: pointer;
 }
 
@@ -259,7 +239,153 @@ main {
     background-color: #444444;
 }
 
-/* Responsive Design */
+.container {
+    display: flex;
+    padding: 30px;
+    gap: 20px;
+    background-color: #d6d6d6;
+}
+
+.calendar-container {
+    background-color: #1e1e1e;
+    color: #d6d6d6;
+    flex: 2;
+    padding: 20px;
+    width: 60%;
+}
+
+.calendar-container h2 {
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+.calendar {
+    background-color: #262626;
+    padding: 10px;
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 5px;
+}
+
+.calendar-header {
+    grid-column: span 7;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+}
+
+.calendar-day, .calendar-date {
+    text-align: center;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+.calendar-day {
+    background-color: #262626;
+}
+
+.calendar-date {
+    background-color: #262626;
+    cursor: pointer;
+}
+
+.calendar-date:hover, .calendar-date.selected {
+    background-color: #666666;
+}
+
+.time-buttons {
+    text-align: center;
+    margin: 20px 0;
+}
+
+.time-buttons button {
+    background-color: #262626;
+    color: #d6d6d6;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin: 5px;
+    transition: background-color 0.3s;
+}
+
+.time-buttons button:hover {
+    background-color: #666666;
+}
+
+.time-slots {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+}
+
+.time-slot {
+    background-color: #262626;
+    padding: 10px;
+    border-radius: 5px;
+    text-align: center;
+    cursor: pointer;
+    color: #d6d6d6;
+}
+
+.time-slot:hover, .time-slot.selected {
+    background-color: #555555;
+}
+/* Input Field Styles */
+.input-field {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border: none;
+    border-radius: 5px;
+    background-color: #d6d6d6;
+    font-size: 16px;
+    color: #262626;
+    box-sizing: border-box;
+}
+
+.input-field::placeholder {
+    color: #666666;
+    opacity: 0.8;
+}
+
+.input-field:focus {
+    outline: none;
+    background-color: #cccccc;
+    border: 2px solid #000000;
+}
+
+
+.contact-info {
+    background-color: #262626;
+    color: #d6d6d6; 
+    padding: 20px;
+    width: 60%;
+}
+
+.contact-info h2 {
+    font-size: 24px;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.contact-form {
+    display: flex;
+    flex-direction: column;
+}
+
+
+@media (max-width: 768px) {
+    main {
+        flex-direction: column;
+    }
+
+    .service-selection, .summary {
+        width: 100%;
+        margin-bottom: 20px;
+    }
+}
+
 @media (max-width: 768px) {
     .section {
         flex-direction: column;
@@ -267,6 +393,16 @@ main {
     }
 
     .image-container, .opening-hours, .services {
+        width: 100%;
+        margin: 10px 0;
+    }
+}
+@media (max-width: 768px) {
+    .container {
+        flex-direction: column;
+    }
+
+    .calendar-container, .summary-container {
         width: 100%;
         margin: 10px 0;
     }

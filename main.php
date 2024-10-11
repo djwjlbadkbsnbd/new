@@ -16,20 +16,18 @@
 <body>
     <header>
         <div class="logo">
-            <img src="https://via.placeholder.com/40" alt="Kadeřnictví Láska logo">
-            <h1>Kadeřnictví Láska</h1>
+            <img src="img/logo.png" alt="Kadeřnictví Láska logo">
         </div>
         <nav>
             <ul>
-                <li><a href="#section1">Novinky</a></li>
+                <li><a href="#">Novinky</a></li>
                 <li><a href="#section2">Služby</a></li>
-                <li><a href="#section2">Rezervace</a></li>
+                <li><a href="index.php">Rezervace</a></li>
             </ul>
         </nav>
     </header>
 
     <main>
-        <!-- Section 1: Opening Hours & Image -->
         <section id="section1" class="section">
             <div class="opening-hours">
                 <h2>Otevírací doba</h2>
@@ -47,8 +45,6 @@
                 <img src="https://via.placeholder.com/600x400" alt="Kadeřnictví Image">
             </div>
         </section>
-
-        <!-- Section 2: Services & Reservation -->
         <section id="section2" class="section">
             <div class="services">
                 <h2>Ceník Služeb</h2>
