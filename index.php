@@ -13,6 +13,7 @@
         </div>
         <nav>
             <ul>
+            <li><a href="login.php">login</a></li>
                 <li><a href="main.php">Novinky</a></li>
                 <li><a href="#">galerie</a></li>
                 <li><a href="#">Rezervace</a></li>
@@ -22,23 +23,28 @@
     <main>
         <section class="service-selection">
             <h2>Výběr služby</h2>
+            <hr>
             <div class="services">
                 <div class="service-item">
                     <span>Pánský střih</span>
                     <span>000 Kč</span>
                 </div>
+                <hr>
                 <div class="service-item">
                     <span>Pánský střih</span>
                     <span>000 Kč</span>
                 </div>
+                <hr>
                 <div class="service-item">
                     <span>Pánský střih</span>
                     <span>000 Kč</span>
                 </div>
+                <hr>
                 <div class="service-item">
                     <span>Pánský střih</span>
                     <span>000 Kč</span>
                 </div>
+                <hr>
                 <div class="service-item">
                     <span>Pánský střih</span>
                     <span>000 Kč</span>

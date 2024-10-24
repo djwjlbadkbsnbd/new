@@ -20,6 +20,7 @@
         </div>
         <nav>
             <ul>
+            <li><a href="login.php">login</a></li>
                 <li><a href="#">Novinky</a></li>
                 <li><a href="#section2">Služby</a></li>
                 <li><a href="index.php">Rezervace</a></li>
@@ -46,7 +47,7 @@
             </div>
         </section>
         <section id="section2" class="section">
-            <div class="services">
+            <div class="services1">
                 <h2>Ceník Služeb</h2>
                 <div class="service-list">
                     <div class="service">

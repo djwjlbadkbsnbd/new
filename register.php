@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kadeřnictví</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+    </style>
+</head>
+<body>
+<header>
+        <div class="logo">
+            <img src="img/logo.png" alt="Kadeřnictví Láska logo">
+        </div>
+        <nav>
+            <ul>
+                <li><a href="main.php">Homepage</a></li>
+                <li><a href="#">Galerie</a></li>
+                <li><a href="index.php">Rezervace</a></li>
+            </ul>
+        </nav>
+    </header>
+<div class="form-container" id="registerForm">
+        <h2>Registrace</h2>
+        <form action="register_action.php" method="post">
+            <div class="form-group">
+                <label for="name">Uživatelské jméno:</label>
+                <hr>
+                <input type="text" id="name" name="name" required>
+            </div>
+            <div class="form-group">
+                <label for="email">Email:</label>
+                <hr>
+                <input type="email" id="email" name="email" required>
+            </div>
+            <div class="form-group">
+                <label for="password">Heslo:</label>
+                <hr>
+                <input type="password" id="password" name="password" required>
+            </div>
+            <div class="form-group">
+                <button type="submit">Zaregistrovat se</button>
+            </div>
+            <p>Máte účet? <span class="toggle-link"><a href="login.php">Přihlaste se</a></span></p>
+        </form>
+</div>
+</body>
+</html>

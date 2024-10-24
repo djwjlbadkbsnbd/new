@@ -13,6 +13,7 @@
         </div>
         <nav>
             <ul>
+                <li><a href="login.php">login</a></li>
                 <li><a href="main.php">Novinky</a></li>
                 <li><a href="#">Galerie</a></li>
                 <li><a href="index.php">Rezervace</a></li>

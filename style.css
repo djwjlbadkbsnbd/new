@@ -62,18 +62,18 @@ main {
     font-size: 24px;
     margin-bottom: 20px;
     color: #ffffff;
+    margin-left: 330px;
 }
 
 .services {
-    display: flex;
     flex-direction: column;
     gap: 15px;
+    background-color: none;
 }
 
 .service-item {
     display: flex;
     justify-content: space-between;
-    background-color: #333333;
     padding: 15px;
     color: #bbbbbb;
     font-size: 16px;
@@ -103,7 +103,7 @@ main {
 }
 
 .summary-details {
-    background-color: #222222;
+    
     padding: 15px;
     margin-bottom: 20px;
     color: #ffffff;
@@ -181,7 +181,7 @@ main {
     border-radius: 10px;
 }
 
-.services {
+.services1 {
     background-color: #1e1e1e;
     color: #d9d9d9;
     padding: 30px;
@@ -190,7 +190,7 @@ main {
     margin: 15px;
 }
 
-.services h2 {
+.services1 h2 {
     font-size: 24px;
     margin-bottom: 15px;
 }
@@ -372,6 +372,71 @@ main {
 .contact-form {
     display: flex;
     flex-direction: column;
+}
+.form-container {
+    background-color: #262626;
+    color: #d6d6d6;
+    padding: 20px;
+    border-radius: 10px;
+    width: 300px;
+    text-align: center;
+    margin-left: 37%;
+    margin-top: 10%;
+}
+
+.form-container h2 {
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+.form-group {
+    margin-bottom: 15px;
+    text-align: left;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+.form-group input {
+    width: 94%;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    background-color: #262626;
+    color: #d6d6d6;
+}
+
+.form-group input::placeholder {
+    color: #bbbbbb;
+}
+
+.form-group button {
+    width: 100%;
+    padding: 10px;
+    background-color: #d6d6d6;
+    color: #000000;
+    border: 1px solid #000000;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.form-group button:hover {
+    background-color: #bbbbbb;
+    color: #262626;
+    transition: 0.3s;
+}
+
+.toggle-link {
+    color: #d6d6d6;
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+.toggle-link:hover {
+    color: #bbbbbb;
 }
 
 

@@ -14,6 +14,7 @@
         </div>
         <nav>
             <ul>
+            <li><a href="login.php">login</a></li>
                 <li><a href="#news">Novinky</a></li>
                 <li><a href="#gallery">Galerie</a></li>
                 <li><a href="#reservation">Rezervace</a></li>
