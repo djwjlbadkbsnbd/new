@@ -2,8 +2,7 @@
 
 body {
     font-family: 'Noto serif', sans-serif;
-    background-color: #f2f2f2;
-    color: #ffffff;
+    color: #d9d9d9;
     margin: 0;
     padding: 0;
     scroll-behavior: smooth;
@@ -49,13 +48,18 @@ main {
     display: flex;
     justify-content: space-between;
     padding: 30px;
+    background-image: url(img/background.png);
+}
+.divmain {
+    display: flex;
+    justify-content: space-between;
+    padding: 30px;
 }
 
 /* Service Selection */
 .service-selection {
     background-color: #222222;
     padding: 20px;
-    width: 60%;
 }
 
 .service-selection h2 {
@@ -139,10 +143,14 @@ main {
 .section {
     height: 100vh;
     display: flex;
-    justify-content: center;
     align-items: center;
     flex-wrap: wrap;
     padding: 20px;
+}
+.block {
+    width: 170.9h;
+    background-color: #262626;
+    height: 100px;
 }
 
 .opening-hours {
@@ -150,18 +158,21 @@ main {
     color: #d9d9d9;
     padding: 30px;
     flex: 1;
+    max-width: 420px;
     min-width: 300px;
     margin: 15px;
+    height: 500px;
 }
 
 .opening-hours h2 {
-    font-size: 24px;
+    font-size: 27px;
     margin-bottom: 15px;
+    margin-left: 27.5%;
 }
 
 .hours-list p {
     margin: 5px 0;
-    font-size: 16px;
+    font-size: 20px;
     text-align: center;
 }
 
@@ -170,7 +181,7 @@ main {
     flex: 2;
     min-width: 300px;
     margin: 15px;
-    display: flex;
+    display: none;
     align-items: center;
     justify-content: center;
     height: 70%;
@@ -186,8 +197,9 @@ main {
     color: #d9d9d9;
     padding: 30px;
     flex: 1;
-    min-width: 300px;
+    width: 420px;
     margin: 15px;
+    margin-left: 750px;
 }
 
 .services1 h2 {
@@ -441,7 +453,7 @@ main {
 
 
 @media (max-width: 768px) {
-    main {
+    main, .divmain {
         flex-direction: column;
     }
 

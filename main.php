@@ -33,19 +33,23 @@
             <div class="opening-hours">
                 <h2>Otevírací doba</h2>
                 <div class="hours-list">
-                    <p>PONDĚLÍ: 8-12:30 / 13-17:30</p>
-                    <p>ÚTERÝ: 8-12:30 / 13-17:30</p>
-                    <p>STŘEDA: 8-12:30 / 13-17:30</p>
-                    <p>ČTVRTEK: 8-12:30 / 13-17:30</p>
-                    <p>PÁTEK: 8-12:30 / 13-17:30</p>
-                    <p>SOBOTA: 8-11:30</p>
-                    <p>NEDĚLE: ZAVŘENO</p>
+                    <p>PONDĚLÍ: 8-12:30 / 13-17:30</p><br>
+                    <p>ÚTERÝ: 8-12:30 / 13-17:30</p><br>
+                    <p>STŘEDA: 8-12:30 / 13-17:30</p><br>
+                    <p>ČTVRTEK: 8-12:30 / 13-17:30</p><br>
+                    <p>PÁTEK: 8-12:30 / 13-17:30</p><br>
+                    <p>SOBOTA: 8-11:30</p><br>
+                    <p>NEDĚLE: ZAVŘENO</p><br>
                 </div>
             </div>
             <div class="image-container">
-                <img src="https://via.placeholder.com/600x400" alt="Kadeřnictví Image">
+                <img  alt="Kadeřnictví Image">
             </div>
         </section>
+    </main>
+        <div class="block"></div>
+    <div class="divmain">
+
         <section id="section2" class="section">
             <div class="services1">
                 <h2>Ceník Služeb</h2>
@@ -71,11 +75,11 @@
                         <div class="service-description">000 Kč - Střih vlasů</div>
                     </div>
                 </div>
-            </div>
-            <div class="reservation">
-                <button>REZERVACE</button>
+                <div class="reservation">
+                    <button>REZERVACE</button>
+                </div>
             </div>
         </section>
-    </main>
+    </div>
 </body>
 </html>
