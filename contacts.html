@@ -13,8 +13,8 @@
         </div>
         <nav>
             <ul>
-                <li><a href="login.php">login</a></li>
-                <li><a href="main.php">Novinky</a></li>
+                <li><a href="login.html">login</a></li>
+                <li><a href="main.html">Novinky</a></li>
                 <li><a href="#">Galerie</a></li>
                 <li><a href="index.html">Rezervace</a></li>
             </ul>
@@ -23,11 +23,12 @@
     <main>
         <section class="contact-info">
             <h2>Kontaktní údaje</h2>
-            <div class="contact-form">
-                <input type="text" class="input-field" placeholder="Jméno a příjmení" required>
-                <input type="email" class="input-field" placeholder="E-mail" required>
-                <input type="tel" class="input-field" placeholder="Telefonní číslo" required>
-                <input type="text" class="input-field" placeholder="Poznámka (volitelné)">
+            <div class="contact-form" >
+        <form action="contacts_action.php" method="post">
+                <input type="text" name="name" class="input-field" placeholder="Jméno a příjmení" required>
+                <input type="email" name="email" class="input-field" placeholder="E-mail" required>
+                <input type="number" name="number" class="input-field" placeholder="Telefonní číslo" required>
+                <input type="text" name="note" class="input-field" placeholder="Poznámka (volitelné)">
             </div>
         </section>
         <aside class="summary">
@@ -40,7 +41,8 @@
                 <p>Termín <span>01.01.2025</span></p>
                 <p>Údaje <span>-</span></p>
             </div>
-            <button class="confirm-button"><a href="confirmation.php">Potvrdit rezervaci</a></button>
+            <button  type="submit" class="confirm-button"> rezervaci</button>
+        </form>
         </aside>
     </main>
 </body>

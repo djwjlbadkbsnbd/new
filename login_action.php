@@ -1,31 +1,63 @@
 <?php
-// Database connection
-$conn = new mysqli('localhost', 'root', '', 'rezerver');
+session_start(); // Start a session to store user information if login is successful
 
+// Database connection details
+$servername = "localhost";
+$username = "root";
+$password = "";
+$dbname = "rezerver";
+
+// Create connection
+$conn = new mysqli($servername, $username, $password, $dbname);
+
+// Check connection
 if ($conn->connect_error) {
-    die('Connection failed: ' . $conn->connect_error);
+    die("Connection failed: " . $conn->connect_error);
 }
 
-if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    $name = $conn->real_escape_string($_POST['name']);
-    $password = $_POST['password'];
+// Get data from the form
+$name = $_POST['name'];
+$password = $_POST['password'];
 
-    $query = "SELECT * FROM user WHERE name = '$name'";
-    $result = $conn->query($query);
+// Prepare the SQL query
+$sql = "SELECT id, password, is_admin FROM user WHERE name = ?";
+$stmt = $conn->prepare($sql);
+$stmt->bind_param("s", $name);
+$stmt->execute();
+$result = $stmt->get_result();
 
-    if ($result->num_rows > 0) {
-        $user = $result->fetch_assoc();
-        if (password_verify($password, $user['password'])) {
-            session_start();
-            $_SESSION['name'] = $user['name'];
-            header('Location: admin.php');
+if ($result->num_rows > 0) {
+    $user = $result->fetch_assoc();
+
+   
+    if (password_verify($password, $user['password'])) {
+        // Check if the user is an admin
+        if ($user['is_admin'] == 1) {
+            // Successful login as admin
+            $_SESSION['user_id'] = $user['id'];
+            $_SESSION['name'] = $name;
+            $_SESSION['is_admin'] = true;
+            header("Location: admin.php"); // Redirect to admin dashboard
+            exit();
         } else {
-            echo "Incorrect password.";
+            
+            $_SESSION['error'] = "You do not have admin privileges.";
+            header("Location: login.html"); 
+            exit();
         }
     } else {
-        echo "No user found with that username.";
+       
+        $_SESSION['error'] = "Incorrect password.";
+        header("Location: login.html");
+        exit();
     }
+} else {
+   
+    $_SESSION['error'] = "User not found.";
+    header("Location: login.html");
+    exit();
 }
 
+$stmt->close();
 $conn->close();
 ?>
