@@ -1,3 +1,6 @@
+<?php
+session_start();
+?>
 <!DOCTYPE html>
 <html lang="cs">
 <head>
@@ -5,6 +8,24 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Kadeřnictví Láska - Kontaktní údaje</title>
     <link rel="stylesheet" href="style.css">
+    <script>
+        // Retrieve selected date and time from localStorage
+        const selectedDate = localStorage.getItem("selectedDate");
+        const selectedTime = localStorage.getItem("selectedTime");
+    
+        // Display the selected date and time in the summary and hidden inputs
+        if (selectedDate && selectedTime) {
+            document.getElementById("selectedDate").textContent = selectedDate;
+            document.getElementById("selectedTime").textContent = selectedTime;
+    
+            // Set the hidden input values to be sent with the form
+            document.getElementById("hiddenDate").value = selectedDate;
+            document.getElementById("hiddenTime").value = selectedTime;
+        } else {
+            document.getElementById("selectedDate").textContent = "Není vybrán termín";
+            document.getElementById("selectedTime").textContent = "Není vybrán čas";
+        }
+    </script>
 </head>
 <body>
     <header>
@@ -29,6 +50,8 @@
                 <input type="email" name="email" class="input-field" placeholder="E-mail" required>
                 <input type="number" name="number" class="input-field" placeholder="Telefonní číslo" required>
                 <input type="text" name="note" class="input-field" placeholder="Poznámka (volitelné)">
+                <input type="hidden" name="selected_date" id="hiddenDate">
+                <input type="hidden" name="selected_time" id="hiddenTime">
             </div>
         </section>
         <aside class="summary">
@@ -38,7 +61,8 @@
             <h3>Souhrn</h3>
             <div class="summary-details">
                 <p>Pánský střih <span>000 Kč</span></p>
-                <p>Termín <span>01.01.2025</span></p>
+                <p>Termín: <span id="selectedDate"></span></p>
+                <p>Čas: <span id="selectedTime"></span></p>
                 <p>Údaje <span>-</span></p>
             </div>
             <button  type="submit" class="confirm-button"> rezervaci</button>

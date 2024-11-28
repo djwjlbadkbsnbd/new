@@ -48,7 +48,8 @@ main {
     display: flex;
     justify-content: space-between;
     padding: 30px;
-    background-image: url(img/background.png);
+    background-image: url(img/background.jpg);
+    box-shadow: inset 0 0 0 1000px rgba(0,0,0,.4);
 }
 .divmain {
     display: flex;
@@ -75,20 +76,62 @@ main {
     background-color: none;
 }
 
+
 .service-item {
     display: flex;
+    align-items: center;
     justify-content: space-between;
-    padding: 15px;
-    color: #bbbbbb;
-    font-size: 16px;
+    margin: 10px 0;
 }
 
-.service-item:hover {
-    background-color: #444444;
+
+.service-label input[type="radio"] {
+    display: none;
+}
+
+
+.service-label {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    padding: 10px 15px;
+    border: 2px solid #ccc;
+    border-radius: 5px;
+    background-color: #f9f9f9;
     cursor: pointer;
+    transition: 0.3s ease;
 }
 
-/* Summary */
+.service-label:hover {
+    border-color: #007bff;
+    background-color: #eef6ff;
+}
+
+.service-label .service-name {
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.service-label .service-price {
+    font-size: 14px;
+    color: #555;
+}
+
+/* Styling for Selected (Checked) Label */
+.service-label input[type="radio"]:checked + .service-name,
+.service-label input[type="radio"]:checked + .service-price {
+    color: #007bff;
+    font-weight: bold;
+}
+
+.service-label input[type="radio"]:checked + span {
+    border-color: #007bff;
+    background-color: #e6f3ff;
+}
+
+
+
 .summary {
     background-color: #888888;
     padding: 20px;
@@ -143,9 +186,6 @@ main {
 .section {
     height: 100vh;
     display: flex;
-    align-items: center;
-    flex-wrap: wrap;
-    padding: 20px;
 }
 .block {
     width: 170.9h;
@@ -196,10 +236,11 @@ main {
     background-color: #1e1e1e;
     color: #d9d9d9;
     padding: 30px;
-    flex: 1;
     width: 420px;
     margin: 15px;
-    margin-left: 750px;
+    margin-left: 50px;
+    max-width: 420px;
+    flex: 1;
 }
 
 .services1 h2 {
@@ -208,8 +249,6 @@ main {
 }
 
 .service-list {
-    display: flex;
-    flex-wrap: wrap;
     gap: 15px;
 }
 
@@ -550,3 +589,39 @@ footer {
         margin: 10px 0;
     }
 }
+
+
+.services1 {
+    width: 55%; /* Set the width for the service list */
+    padding: 20px; /* Add padding for spacing */
+}
+
+/* Make the layout responsive */
+@media (max-width: 768px) {
+    .services-container {
+        flex-direction: column; /* Stack image and services on smaller screens */
+        align-items: center; /* Center the items */
+    }
+
+    .image-wrapper, .services1 {
+        width: 100%; /* Make both elements take full width on smaller screens */
+    }
+}
+.content-wrapper {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px; /* Space between the two columns */
+
+  }
+  
+
+  .image-wrapper {
+    flex: 1; /* Takes up one part of the space */
+  }
+  
+  .image-wrapper img {
+    margin-top: 50px;
+    width: 800px; /* Makes the image responsive */
+    max-width: 100%; /* Ensures the image doesn't exceed the column width */
+    height: 700px; /* Maintains the aspect ratio */
+  }

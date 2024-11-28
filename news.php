@@ -1,5 +1,5 @@
 <?php
-session_start(); // Ensure session is started if checking admin status
+session_start(); 
 
 // Database connection
 $servername = "localhost";
@@ -25,7 +25,6 @@ if (isset($_POST['create'])) {
     $stmt->bind_param("ssss", $title, $content, $date, $author);
     $stmt->execute();
 }
-
 
 if (isset($_GET['delete'])) {
     $id = $_GET['delete'];
