@@ -24,7 +24,6 @@
     <form action="" method="post">
     <div class="services">
         <?php
-        // Database connection
         $servername = "localhost";
         $username = "root";
         $password = "";
@@ -36,7 +35,7 @@
             die("Connection failed: " . $conn->connect_error);
         }
 
-        // Fetch services
+        
         $sql = "SELECT id, name, price FROM services";
         $result = $conn->query($sql);
 
@@ -56,8 +55,8 @@
 
         $conn->close();
         ?>
-    </div>
     <button type="submit">Vybrat službu</button>
+    </div>
 </form>
 
         <aside class="summary">
@@ -88,13 +87,17 @@
                         echo '<p>Termín <span>Vyberte cas</span></p>';
                         echo '<p>Údaje <span>-</span></p>';
                     } else {
-                        echo "<p>Vyberte službu, aby se zobrazil souhrn.</p>";
+                        echo "<p>Vyberte </p>";
+                        echo '<p>Termín <span>Vyberte cas</span></p>';
+                        echo '<p>Údaje <span>-</span></p>';
                     }
 
                     $stmt->close();
                     $conn->close();
                 } else {
-                    echo "<p>Vyberte službu, aby se zobrazil souhrn.</p>";
+                    echo "<p>Vyberte službu</p>";
+                    echo '<p>Termín <span>Vyberte cas</span></p>';
+                    echo '<p>Údaje <span>-</span></p>';
                 }
                 ?>
             </div>

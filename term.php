@@ -50,8 +50,8 @@ session_start();
             </div>
             <h3>Souhrn</h3>
             <div class="summary-details">
-                <p>Pánský střih <span>000 Kč</span></p>
-                <p>Termín:<span id="selectedDate">Vyberte datum</span></p>
+            <?php echo '<p>' . htmlspecialchars($row['name']) . ' <span>' . htmlspecialchars($row['price']) . ' Kč</span></p>';
+                ?><p>Termín:<span id="selectedDate">Vyberte datum</span></p>
                 <p>Čas:<span id="selectedTime">Vyberte čas</span></p>
                 <p>Údaje <span>-</span></p>
             </div>
