@@ -34,13 +34,11 @@ session_start();
                 <button onclick="changeMonth(1)">&#62;</button>
             </div>
             <div class="calendar" id="calendar">
-                <!-- Calendar will be dynamically generated here -->
             </div>
             <div class="time-buttons">
                 
             </div>
             <div class="time-slots" id="timeSlots">
-                <!-- Time slots will be populated here -->
             </div>
         </div>
 

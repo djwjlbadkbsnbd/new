@@ -65,7 +65,7 @@ session_start();
                 <p>Čas: <span id="selectedTime"></span></p>
                 <p>Údaje <span>-</span></p>
             </div>
-            <button  type="submit" class="confirm-button"> rezervaci</button>
+            <button  type="submit" style="margin-left: 0px;" class="confirm-button"> rezervaci</button>
         </form>
         </aside>
     </main>
