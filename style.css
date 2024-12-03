@@ -126,16 +126,15 @@ button[type="submit"]:hover {
     justify-content: space-between;
     width: 100%;
     padding: 10px 15px;
-    border: 2px solid #ccc;
     border-radius: 5px;
-    background-color: #f9f9f9;
+    background-color: #262626;
     cursor: pointer;
     transition: 0.3s ease;
 }
 
 .service-label:hover {
-    border-color: #007bff;
     background-color: #eef6ff;
+    color: #262626;
 }
 
 .service-label .service-name {
@@ -146,17 +145,18 @@ button[type="submit"]:hover {
 .service-label .service-price {
     font-size: 14px;
     color: #555;
+    font-weight: bold;
 }
 
 /* Styling for Selected (Checked) Label */
 .service-label input[type="radio"]:checked + .service-name,
 .service-label input[type="radio"]:checked + .service-price {
-    color: #007bff;
+    color: #262626;
     font-weight: bold;
 }
 
 .service-label input[type="radio"]:checked + span {
-    border-color: #007bff;
+    border-color: #262626;
     background-color: #e6f3ff;
 }
 
@@ -420,9 +420,9 @@ button[type="submit"]:hover {
     margin: 10px 0;
     border: none;
     border-radius: 5px;
-    background-color: #d6d6d6;
+    background-color: #262626;
     font-size: 16px;
-    color: #262626;
+    color: #d6d6d6;
     box-sizing: border-box;
 }
 
