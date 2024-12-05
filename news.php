@@ -75,7 +75,7 @@ $result = $conn->query($sql);
             <ul>
                 <li><a href="login.html">login</a></li>
                 <li><a href="main.html">Homepage</a></li>
-                <li><a href="#">Galerie</a></li>
+                <li><a href="galery.html">Galerie</a></li>
                 <li><a href="index.php">Rezervace</a></li>
                 <li><?php if (isset($_SESSION['is_admin']) && $_SESSION['is_admin'] === true) { ?>
     <div class="admin-controls">
