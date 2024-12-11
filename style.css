@@ -326,8 +326,15 @@ button[type="submit"]:hover {
     padding: 30px;
     gap: 20px;
     background-color: #d6d6d6;
+    width: 820px;
+    height: 600px;
 }
-
+#calendar-timeslots {
+        display: grid;
+        grid-template-columns: repeat(10, 1fr);
+        gap: 5px;
+        margin-top: 20px;
+}
 .calendar-container {
     background-color: #1e1e1e;
     color: #d6d6d6;
@@ -400,14 +407,16 @@ button[type="submit"]:hover {
     grid-template-columns: repeat(4, 1fr);
     gap: 10px;
 }
-
+.timeslot_container {
+    width: 800px;
+}
 .time-slot {
     background-color: #262626;
-    padding: 10px;
-    border-radius: 5px;
+    padding: 5px;
     text-align: center;
     cursor: pointer;
     color: #d6d6d6;
+    margin-left: 14px;
 }
 
 .time-slot:hover, .time-slot.selected {

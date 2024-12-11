@@ -1,8 +1,17 @@
 <?php
 header('Content-Type: application/json');
-require_once 'config.php'; // Include your database connection
+$servername = "localhost";
+$username = "root";
+$password = "";
+$dbname = "rezerver";
 
-// Get the POST data
+
+$conn = new mysqli($servername, $username, $password, $dbname);
+
+if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
+}
+
 $data = json_decode(file_get_contents('php://input'), true);
 $bookingDate = $data['booking_date'];
 $startTime = $data['start_time'];

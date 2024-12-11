@@ -1,43 +1,50 @@
 <?php
-header('Content-Type: application/json');
+$pdo = new PDO('mysql:host=localhost;dbname=rezerver', 'root', '');
 
-// Database connection
-$conn = new mysqli('localhost', 'root', '', 'rezerver');
+// Define the date range for time slots
+$startDate = '2024-09-01';
+$endDate = '2024-09-30';
 
-// Check if the connection is successful
-if ($conn->connect_error) {
-    die('Connection failed: ' . $conn->connect_error);
-}
+// Define the time range for each day
+$startTime = '09:00:00';
+$endTime = '17:00:00';
+$intervalMinutes = 30; // Interval between time slots
 
-// Get the raw POST data
-$data = json_decode(file_get_contents('php://input'), true);
+// Helper function to generate time slots
+function generateTimeSlots($startTime, $endTime, $intervalMinutes) {
+    $slots = [];
+    $current = strtotime($startTime);
+    $end = strtotime($endTime);
 
-// Check if the required data is provided
-if (isset($data['timeSlotId'])) {
-    $timeSlotId = $data['timeSlotId'];
-
-    // Query to update the time slot availability
-    $sql = "UPDATE timeslot SET is_available = 0 WHERE id = ?";
-
-    if ($stmt = $conn->prepare($sql)) {
-        // Bind the time slot ID to the query
-        $stmt->bind_param("i", $timeSlotId);
-
-        // Execute the query
-        if ($stmt->execute()) {
-            echo json_encode(['success' => true, 'message' => 'Time slot updated successfully']);
-        } else {
-            echo json_encode(['success' => false, 'message' => 'Error updating time slot']);
-        }
-
-        $stmt->close();
-    } else {
-        echo json_encode(['success' => false, 'message' => 'Error preparing statement']);
+    while ($current < $end) {
+        $start = date('H:i:s', $current);
+        $current = strtotime("+$intervalMinutes minutes", $current);
+        $endSlot = date('H:i:s', $current);
+        $slots[] = [$start, $endSlot];
     }
-} else {
-    echo json_encode(['success' => false, 'message' => 'Time slot ID not provided']);
+    return $slots;
 }
 
-// Close the database connection
-$conn->close();
+// Generate and insert time slots into the database
+$slots = generateTimeSlots($startTime, $endTime, $intervalMinutes);
+$currentDate = strtotime($startDate);
+$endDate = strtotime($endDate);
+
+while ($currentDate <= $endDate) {
+    $date = date('Y-m-d', $currentDate);
+
+    foreach ($slots as $slot) {
+        $stmt = $pdo->prepare("INSERT INTO timeslot (date, start_time, end_time, is_available) VALUES (:date, :start_time, :end_time, :is_available)");
+        $stmt->execute([
+            ':date' => $date,
+            ':start_time' => $slot[0],
+            ':end_time' => $slot[1],
+            ':is_available' => 1 // Mark as available by default
+        ]);
+    }
+
+    $currentDate = strtotime('+1 day', $currentDate);
+}
+
+echo "Time slots successfully generated and inserted into the database!";
 ?>

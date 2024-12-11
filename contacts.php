@@ -46,8 +46,7 @@ session_start();
             <h3>Souhrn</h3>
             <div class="summary-details">
                 <?php
-                // Display selected service details from session
-                if (isset($_SESSION['service'])) {
+              if (isset($_SESSION['service'])) {
                     echo '<p> ' . htmlspecialchars($_SESSION['service']['name']) . ' <span>' . htmlspecialchars($_SESSION['service']['price']) . ' Kč</span></p>';
                 } else {
                     echo '<p>Služba: Vyberte službu</p>';
