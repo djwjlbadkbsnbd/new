@@ -30,15 +30,33 @@ if ($selectedDay) {
 
 // Save selected date and time
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $_SESSION['selected_date'] = $_POST['selected_date'];
-    $_SESSION['selected_time'] = $_POST['selected_time'];
-    header('Location: ' . $_SERVER['PHP_SELF']);
+    // Save the selected date to session
+    if (isset($_POST['selected_date'])) {
+        $_SESSION['selected_date'] = $_POST['selected_date'];
+    }
+
+    // Save the selected time slot to session
+    if (isset($_POST['time_slot_id'])) {
+        $stmt = $pdo->prepare("SELECT start_time FROM timeslot WHERE id = :id");
+        $stmt->execute(['id' => $_POST['time_slot_id']]);
+        $timeSlot = $stmt->fetch(PDO::FETCH_ASSOC);
+
+        $_SESSION['selected_time'] = $timeSlot['start_time'];
+        $_SESSION['selected_time_slot_id'] = $_POST['time_slot_id'];  // Save the time slot ID
+    }
+    
+    // Redirect after form submission to prevent resubmission
+    header('Location: ' . $_SERVER['PHP_SELF'] . '?day=' . (int)$selectedDay);
     exit;
 }
+
+
+
+
 ?>
+
 <!DOCTYPE html>
 <html lang="cs">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -70,33 +88,32 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             </div>
             <div class="calendar">
                 <?= generateCalendar($daysInMonth, $selectedDay) ?>
-            </div>¨
-        <div class="timeslot_container">
-            <div class="time-slots">
-                <div id="calendar-timeslots">
-                    <?php foreach ($timeSlots as $slot): ?>
-                        <?php if ($slot['is_available']): ?>
-                            <div class="time-slot">
-                                <label>
-                                    <input type="radio" name="time_slot_id" value="<?= $slot['id'] ?>"> <!-- Use the slot ID -->
-                                    <?= $slot['start_time'] ?> 
-                                </label>
-                            </div>
-                        <?php else: ?>
-                            <div class="time-slot unavailable">
-                                <?= $slot['start_time'] ?> - <?= $slot['end_time'] ?> (Obsazeno)
-                            </div>
-                        <?php endif; ?>
-                        <?php endforeach; ?>
-                        
+            </div>
+            <div class="timeslot_container">
+                <form method="POST" action="">
+                    <div class="time-slots">
+                        <input type="hidden" name="selected_date" value="<?= isset($selectedDay) ? "$currentYear-$currentMonth-" . str_pad($selectedDay, 2, '0', STR_PAD_LEFT) : '' ?>">
+                        <div id="calendar-timeslots">
+                            <?php foreach ($timeSlots as $slot): ?>
+                                <?php if ($slot['is_available']): ?>
+                                    <div class="time-slot">
+                                        <label>
+                                            <input type="radio" name="time_slot_id" value="<?= $slot['id'] ?>" onchange="this.form.submit()">
+                                            <?= $slot['start_time'] ?>
+                                        </label>
+                                    </div>
+                                <?php else: ?>
+                                    <div class="time-slot unavailable">
+                                        <?= $slot['start_time'] ?> - <?= $slot['end_time'] ?> (Obsazeno)
+                                    </div>
+                                <?php endif; ?>
+                            <?php endforeach; ?>
+                        </div>
                     </div>
-                </div>
+                </form>
             </div>
         </div>
 
-        <!-- Time Slot Section -->
-
-        <!-- Summary Section -->
         <aside class="summary">
             <div class="summary-logo">
                 <img src="img/logo.png" alt="Kadeřnictví Láska logo">
@@ -123,5 +140,4 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         </aside>
     </main>
 </body>
-
 </html>

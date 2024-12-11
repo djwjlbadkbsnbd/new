@@ -1,50 +1,38 @@
 <?php
+// Start session to access session variables
 session_start();
 
-$servername = "localhost";
-$username = "root";
-$password = "";
-$dbname = "rezerver";
+$pdo = new PDO('mysql:host=localhost;dbname=rezerver', 'root', '');
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    // Retrieve form data and session variables
+    $name = filter_input(INPUT_POST, 'name', FILTER_SANITIZE_STRING);
+    $email = filter_input(INPUT_POST, 'email', FILTER_SANITIZE_EMAIL);
+    $number = filter_input(INPUT_POST, 'number', FILTER_SANITIZE_NUMBER_INT);
+    $note = filter_input(INPUT_POST, 'note', FILTER_SANITIZE_STRING);
 
-// Create connection
-$conn = new mysqli($servername, $username, $password, $dbname);
+    
+    $timeslot_id = isset($_POST['timeslot_id']) ? intval($_POST['timeslot_id']) : null;
+    $service_id = isset($_POST['service_id']) ? intval($_POST['service_id']) : null;
+    $contact_id = isset($_POST['contact_id']) ? intval($_POST['contact_id']) : null;
 
-// Check connection
-if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
+    // Validate required fields
+    if (!$name || !$email || !$number || !$timeslot_id || !$service_id) {
+        die('Missing required fields. Please try again.');
+    }
+
+    // Prepare and execute the SQL statement
+    try {
+        $stmt = $pdo->prepare("INSERT INTO booking (timeslot_id, service_id, contacts_id) VALUES (?, ?, ?)");
+        $stmt->execute([$timeslot_id, $service_id, $contact_id]);
+
+        // Confirm booking success
+        echo "<p>Booking successfully created! Thank you, $name.</p>";
+        echo '<a href="main.html">Return to homepage</a>';
+    } catch (PDOException $e) {
+        die("Error inserting booking: " . $e->getMessage());
+    }
+} else {
+    echo "Invalid request method.";
 }
-
-  
-    $name = $_POST['name'];
-    $email = $_POST['email'];
-    $number = $_POST['number'];
-    $note = $_POST['note'];
-
-    // Prepare an SQL statement to insert the data
-    $sql = "INSERT INTO contacts (name, email, number, note) VALUES (?, ?, ?, ?)";
-    $stmt = $conn->prepare($sql);
-
-    if ($stmt === false) {
-        die("Error preparing the statement: " . $conn->error);
-    }
-
-    // Bind the parameters as strings
-    $stmt->bind_param("ssss", $name, $email, $number, $note);
-
-    // Execute and check for success
-    if ($stmt->execute()) {
-        $_SESSION['message'] = "Rezervace úspěšně uložena!";
-        header("Location: main.html");
-        exit();
-    } else {
-        $_SESSION['message'] = "Chyba při ukládání rezervace: " . $stmt->error;
-        header("Location: main.html"); 
-        exit();
-    }
-
-    // Close the statement and the connection
-    $stmt->close();
-    $conn->close();
-
 
 ?>

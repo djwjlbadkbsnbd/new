@@ -331,7 +331,7 @@ button[type="submit"]:hover {
 }
 #calendar-timeslots {
         display: grid;
-        grid-template-columns: repeat(10, 1fr);
+        grid-template-columns: repeat( 1fr);
         gap: 5px;
         margin-top: 20px;
 }
@@ -404,7 +404,7 @@ button[type="submit"]:hover {
 
 .time-slots {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(1fr , 1fr);
     gap: 10px;
 }
 .timeslot_container {
